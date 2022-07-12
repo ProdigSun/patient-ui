@@ -1,0 +1,266 @@
+{
+  "s": [
+    {
+      "description": "This is a sample for hatool's scripting engine, used to demonstrate some of its features",
+      "name": "Sample Hatool script",
+      "snippets": [
+        {
+          "name": "default",
+          "steps": [
+            {
+              "say": "Olá, poderia me informar seu nome completo?",
+              "uid": "2f3913aa24"
+            },
+            {
+              "uid": "5823f6bec1",
+              "wait": {
+                "placeholder": "Seu nome",
+                "variable": "name"
+              }
+            },
+            {
+              "say": "Prazer, {{name}} !",
+              "uid": "77228f2450"
+            },
+            {
+              "say": "Poderia me informar o nome do responsável?",
+              "uid": "6f9257f810"
+            },
+            {
+              "uid": "1b0d519fd7",
+              "wait": {
+                "placeholder": "Nome do responsável",
+                "variable": "responsible_name"
+              }
+            },
+            {
+              "say": "Ótimo! Você já é paciente do HC?",
+              "uid": "d384398c12"
+            },
+            {
+              "uid": "4dbaa01aa5",
+              "wait": {
+                "options": [
+                  {
+                    "show": "Sim",
+                    "value": "sim"
+                  },
+                  {
+                    "show": "Não",
+                    "value": "nao"
+                  }
+                ],
+                "variable": "hasHc"
+              }
+            },
+            {
+              "switch": {
+                "arg": "hasHc",
+                "cases": [
+                  {
+                    "match": "sim",
+                    "steps": [
+                      {
+                        "say": "Certo, poderia me informar, qual é o tipo de atendimento que você precisa?",
+                        "uid": "983f7ce147"
+                      },
+                      {
+                        "goto": "attendance",
+                        "uid": "1e6dbc43b9"
+                      }
+                    ],
+                    "uid": "f1e26c28fa"
+                  },
+                  {
+                    "default": "nao",
+                    "steps": [
+                      {
+                        "say": "Okay, siga a faixa amarela, realize seu cadastro e agendamento e então siga os passos para consulta agendada.",
+                        "uid": "17dc5f9215"
+                      },
+                      {
+                        "goto": "end",
+                        "uid": "b6fc40b278"
+                      }
+                    ],
+                    "uid": "52ea431bbf"
+                  }
+                ]
+              },
+              "uid": "ca68a53ad2"
+            }
+          ],
+          "uid": "1c615aa889"
+        },
+        {
+          "name": "attendance",
+          "steps": [
+            {
+              "uid": "e85a1b859a",
+              "wait": {
+                "options": [
+                  {
+                    "show": "Consulta",
+                    "value": "consult"
+                  },
+                  {
+                    "show": "Pegar medicamento, fazer teste, curativo ou outro procedimento",
+                    "value": "medicine"
+                  },
+                  {
+                    "show": "Remarcação de consulta, retirar relatório, receita ou fazer pergunta.",
+                    "value": "reeschedule"
+                  }
+                ],
+                "variable": "attendanceType"
+              }
+            },
+            {
+              "switch": {
+                "arg": "attendanceType",
+                "cases": [
+                  {
+                    "match": "consult",
+                    "steps": [
+                      {
+                        "say": "A sua consulta foi agendada, é um encaixe ou nenhum dos dois?",
+                        "uid": "bd726bfce5"
+                      },
+                      {
+                        "goto": "consultType",
+                        "uid": "52c0848b89"
+                      }
+                    ],
+                    "uid": "b08a791235"
+                  },
+                  {
+                    "match": "medicine",
+                    "steps": [
+                      {
+                        "say": "Dirija-se ao ambulatório, informe seu hc e aguarde o atendimento.",
+                        "uid": "3ae123bcab"
+                      },
+                      {
+                        "goto": "end",
+                        "uid": "e67b5e30fc"
+                      }
+                    ],
+                    "uid": "01835ce205"
+                  },
+                  {
+                    "match": "reeschedule",
+                    "steps": [
+                      {
+                        "say": "Dirija-se à sala 23 e aguarde o atendimento",
+                        "uid": "f5d7760b15"
+                      },
+                      {
+                        "goto": "end",
+                        "uid": "9f61cafeca"
+                      }
+                    ],
+                    "uid": "667c3bd9d7"
+                  }
+                ]
+              },
+              "uid": "fe3fa264f4"
+            }
+          ],
+          "uid": "ff9956257a"
+        },
+        {
+          "name": "consultType",
+          "steps": [
+            {
+              "uid": "3ca93a07cf",
+              "wait": {
+                "options": [
+                  {
+                    "show": "Agendada",
+                    "value": "scheduled"
+                  },
+                  {
+                    "show": "Encaixe",
+                    "value": "insert"
+                  },
+                  {
+                    "show": "Nenhum dos dois",
+                    "value": "none"
+                  }
+                ],
+                "variable": "consultType"
+              }
+            },
+            {
+              "switch": {
+                "arg": "consultType",
+                "cases": [
+                  {
+                    "match": "scheduled",
+                    "steps": [
+                      {
+                        "say": "Dirija-se ao ambulatório infantil, informe sua especialidade e seu hc. Você receberá uma senha, aguarde na sala de TV até ser atendido(a).",
+                        "uid": "5d1d1b9069"
+                      },
+                      {
+                        "goto": "end",
+                        "uid": "132cac30ad"
+                      }
+                    ],
+                    "uid": "451c23c453"
+                  },
+                  {
+                    "match": "insert",
+                    "steps": [
+                      {
+                        "say": "Se você recebeu um email confirmando o encaixe, siga a faixa amarela para que sua consulta seja registrada e então siga o processo para consulta agendada.",
+                        "uid": "b08dc34353"
+                      },
+                      {
+                        "goto": "end",
+                        "uid": "93184968eb"
+                      }
+                    ],
+                    "uid": "5ac4b8b75d"
+                  },
+                  {
+                    "match": "none",
+                    "steps": [
+                      {
+                        "say": "Se você não agendou consulta e não recebeu nenhum email confirmando encaixe, dirija-se à sala 23. Aguarde a disponibilidade da consulta e siga os passos para consulta agendada ou retorne outro dia.",
+                        "uid": "a06cc03b84"
+                      },
+                      {
+                        "goto": "end",
+                        "uid": "a88ccd2d63"
+                      }
+                    ],
+                    "uid": "57737370d8"
+                  }
+                ]
+              },
+              "uid": "a8a7642034"
+            }
+          ],
+          "uid": "b9d5f3d282"
+        },
+        {
+          "name": "end",
+          "steps": [
+            {
+              "say": "Muito obrigado pela paciência e espero ter ajudado!",
+              "uid": "8e62cf2d5b"
+            },
+            {
+              "do": {
+                "cmd": "finish_chat"
+              },
+              "uid": "747517b3c3"
+            }
+          ],
+          "uid": "ed31de2a4a"
+        }
+      ]
+    }
+  ]
+}

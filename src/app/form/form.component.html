@@ -1,0 +1,97 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Dados de consulta</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-vertical-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Preencha seu nome completo</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Nome e sobrenome" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Nome do responsável" formControlName="scndCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" *ngIf="secondQuestion">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Você já é paciente do HC?</ng-template>
+      <mat-radio-group  formControlName="secondCtrl" style="float: flex;">
+        <mat-label>Você já é paciente do HC?</mat-label>
+        <br>
+        <mat-radio-button [value]="true">
+          Sim
+        </mat-radio-button>
+        <br>
+        <mat-radio-button [value]="false">
+          Não
+        </mat-radio-button>
+        <br>
+    </mat-radio-group>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext (click)="threatHasHCButton()">Próximo</button>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" *ngIf="secondFormGroup.controls['secondCtrl'].value">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Dados adicionais</ng-template>
+      <mat-radio-group  formControlName="whyIsHc" style="float: flex;">
+        <mat-label>O que veio fazer no HC?</mat-label>
+        <br>
+        <mat-radio-button [value]="consultValues[0]">
+          Consulta
+        </mat-radio-button>
+        <br>
+        <mat-radio-button [value]="consultValues[1]">
+          Pegar medicamento, fazer teste, curativo ou outro procedimento
+        </mat-radio-button>
+        <br>
+        <mat-radio-button [value]="consultValues[2]">
+          Remarcação de consulta, retirar relatório, receita ou fazer pergunta.
+        </mat-radio-button>
+    </mat-radio-group>
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext (click)="threatNeedTypeButton()">Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" *ngIf="secondFormGroup.controls['secondCtrl'].value && thirdFormGroup.controls['whyIsHc'].value == 'consult'">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Tipo de agendamento</ng-template>
+      <mat-radio-group  formControlName="isScheduled" style="float: flex;">
+        <mat-label>A sua consulta foi agendada, é um encaixe ou nenhum dos dois?</mat-label>
+        <br>
+        <mat-radio-button [value]="'scheduled'">
+          Agendada
+        </mat-radio-button>
+        <br>
+        <mat-radio-button [value]="'inserted'">
+          Encaixe
+        </mat-radio-button>
+        <br>
+        <mat-radio-button [value]="'none'">
+          Nenhum dos dois
+        </mat-radio-button>
+        <br>
+    </mat-radio-group>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext (click)="isScheduleProces()">Próximo</button>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Concluído</ng-template>
+    <b>{{result}}</b>
+    <div>
+      <button mat-button matStepperPrevious>Voltar</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
