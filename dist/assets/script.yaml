@@ -8,7 +8,7 @@
         - wait:
             variable: responsible_name
             placeholder: Nome do Responsável pela criança
-        - say: Prazer, {{name}} !
+        - say: Prazer, {{responsible_name}} !
         - say: Agora, poderia me informar o nome da criança que será atendida?
         - wait:
             variable: name

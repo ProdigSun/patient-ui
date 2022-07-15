@@ -23,8 +23,8 @@
               }
             },
             {
-              "say": "Prazer, {{name}} !",
-              "uid": "791e22d955"
+              "say": "Prazer, {{responsible_name}} !",
+              "uid": "f0da03de8c"
             },
             {
               "say": "Agora, poderia me informar o nome da criança que será atendida?",
