@@ -38,19 +38,19 @@
               }
             },
             {
-              "say": "Ótimo! É sua primeira vez no HC?",
-              "uid": "8aab8e6f0c"
+              "say": "Ótimo! Você já é um paciente do HC ou é sua primeira vez?",
+              "uid": "c51f85ad3a"
             },
             {
               "uid": "f88b615719",
               "wait": {
                 "options": [
                   {
-                    "show": "Sim",
+                    "show": "Sou paciente recorrente do HC",
                     "value": "sim"
                   },
                   {
-                    "show": "Não",
+                    "show": "É minha primeira vez",
                     "value": "nao"
                   }
                 ],

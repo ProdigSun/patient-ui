@@ -13,13 +13,13 @@
         - wait:
             variable: name
             placeholder: Nome da criança
-        - say: Ótimo! É sua primeira vez no HC?
+        - say: Ótimo! Você já é um paciente do HC ou é sua primeira vez?
         - wait:
             variable: hasHc
             options:
-                - show: Sim
+                - show: Sou paciente recorrente do HC
                   value: sim
-                - show: Não
+                - show: É minha primeira vez
                   value: nao
         - switch:
             arg: hasHc
