@@ -3,17 +3,17 @@
   snippets:
     - name: default
       steps:
-        - say: Olá, tudo bem? Sou o guia virtual do HC!
+        - say: Olá, tudo bem? Sou o guia virtual do Ambulatório de Pediatria do HC!
         - say: Antes de tudo, poderia me informar seu nome completo?
         - wait:
-            variable: name
-            placeholder: Seu nome
-        - say: Prazer, {{name}} !
-        - say: Poderia me informar o nome do responsável, caso faça sentido?
-        - wait:
             variable: responsible_name
-            placeholder: Nome do responsável
-        - say: Ótimo! Você já é paciente do HC?
+            placeholder: Nome do Responsável pela criança
+        - say: Prazer, {{name}} !
+        - say: Agora, poderia me informar o nome da criança que será atendida?
+        - wait:
+            variable: name
+            placeholder: Nome da criança
+        - say: Ótimo! É sua primeira vez no HC?
         - wait:
             variable: hasHc
             options:
