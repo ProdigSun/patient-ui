@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://pacient-api.herokuapp.com/patient",
+    "target": "https://pacient-api.herokuapp.com/patient",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
