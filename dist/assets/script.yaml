@@ -1,0 +1,92 @@
+- name: Sample Hatool script
+  description: This is a sample for hatool's scripting engine, used to demonstrate some of its features
+  snippets:
+    - name: default
+      steps:
+        - say: Olá, poderia me informar seu nome completo?
+        - wait:
+            variable: name
+            placeholder: Seu nome
+        - say: Prazer, {{name}} !
+        - say: Poderia me informar o nome do responsável?
+        - wait:
+            variable: responsible_name
+            placeholder: Nome do responsável
+        - say: Ótimo! Você já é paciente do HC?
+        - wait:
+            variable: hasHc
+            options:
+                - show: Sim
+                  value: sim
+                - show: Não
+                  value: nao
+        - switch:
+            arg: hasHc
+            cases:
+              - match: sim
+                steps:
+                  - say: Certo, poderia me informar, qual é o tipo de atendimento que você precisa?
+                  - goto: attendance
+              - default: nao
+                steps:
+                  - say: Okay, siga a faixa amarela, realize seu cadastro e agendamento e então siga os passos para consulta agendada.
+                  - goto: end
+    - name: attendance
+      steps:
+        - wait:
+            variable: attendanceType
+            options:
+                - show: Consulta
+                  value: consult
+                - show: Pegar medicamento, fazer teste, curativo ou outro procedimento
+                  value: medicine
+                - show: Remarcação de consulta, retirar relatório, receita ou fazer pergunta.
+                  value: reeschedule
+        - switch:
+            arg: attendanceType
+            cases:
+              - match: 'consult'
+                steps:
+                  - say: A sua consulta foi agendada, é um encaixe ou nenhum dos dois?
+                  - goto: consultType
+              - match: 'medicine'
+                steps:
+                  - say: Dirija-se ao ambulatório, informe seu hc e aguarde o atendimento.
+                  - goto: end
+              - match: 'reeschedule'
+                steps:
+                  - say: Dirija-se à sala 23 e aguarde o atendimento
+                  - goto: end
+
+    - name: consultType
+      steps:
+        - wait:
+            variable: consultType
+            options:
+              - show: Agendada
+                value: scheduled
+              - show: Encaixe
+                value: insert
+              - show: Nenhum dos dois
+                value: none
+        - switch:
+            arg: consultType
+            cases:
+              - match: 'scheduled'
+                steps:
+                  - say: Dirija-se ao ambulatório infantil, informe sua especialidade e seu hc. Você receberá uma senha, aguarde na sala de TV até ser atendido(a).
+                  - goto: end
+              - match: 'insert'
+                steps:
+                  - say: Se você recebeu um email confirmando o encaixe, siga a faixa amarela para que sua consulta seja registrada e então siga o processo para consulta agendada.
+                  - goto: end
+              - match: 'none'
+                steps:
+                  - say: Se você não agendou consulta e não recebeu nenhum email confirmando encaixe, dirija-se à sala 23. Aguarde a disponibilidade da consulta e siga os passos para consulta agendada ou retorne outro dia.
+                  - goto: end
+
+    - name: end
+      steps:
+        - say: Muito obrigado pela paciência e espero ter ajudado!
+        - do:
+            cmd: finish_chat
