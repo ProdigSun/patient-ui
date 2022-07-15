@@ -8,11 +8,15 @@
           "name": "default",
           "steps": [
             {
-              "say": "Olá, poderia me informar seu nome completo?",
-              "uid": "2f3913aa24"
+              "say": "Olá, tudo bem? Sou o guia virtual do HC!",
+              "uid": "e08ebf1bf8"
             },
             {
-              "uid": "5823f6bec1",
+              "say": "Antes de tudo, poderia me informar seu nome completo?",
+              "uid": "c72cbfbd3f"
+            },
+            {
+              "uid": "0857180620",
               "wait": {
                 "placeholder": "Seu nome",
                 "variable": "name"
@@ -20,14 +24,14 @@
             },
             {
               "say": "Prazer, {{name}} !",
-              "uid": "77228f2450"
+              "uid": "791e22d955"
             },
             {
-              "say": "Poderia me informar o nome do responsável?",
-              "uid": "6f9257f810"
+              "say": "Poderia me informar o nome do responsável, caso faça sentido?",
+              "uid": "e71d112d51"
             },
             {
-              "uid": "1b0d519fd7",
+              "uid": "db838cb103",
               "wait": {
                 "placeholder": "Nome do responsável",
                 "variable": "responsible_name"
@@ -35,10 +39,10 @@
             },
             {
               "say": "Ótimo! Você já é paciente do HC?",
-              "uid": "d384398c12"
+              "uid": "f20f12bf72"
             },
             {
-              "uid": "4dbaa01aa5",
+              "uid": "f88b615719",
               "wait": {
                 "options": [
                   {
@@ -62,32 +66,32 @@
                     "steps": [
                       {
                         "say": "Certo, poderia me informar, qual é o tipo de atendimento que você precisa?",
-                        "uid": "983f7ce147"
+                        "uid": "5b19978b9f"
                       },
                       {
                         "goto": "attendance",
-                        "uid": "1e6dbc43b9"
+                        "uid": "dbb3599419"
                       }
                     ],
-                    "uid": "f1e26c28fa"
+                    "uid": "3c749d8508"
                   },
                   {
                     "default": "nao",
                     "steps": [
                       {
                         "say": "Okay, siga a faixa amarela, realize seu cadastro e agendamento e então siga os passos para consulta agendada.",
-                        "uid": "17dc5f9215"
+                        "uid": "a129586194"
                       },
                       {
                         "goto": "end",
-                        "uid": "b6fc40b278"
+                        "uid": "dc02262a09"
                       }
                     ],
-                    "uid": "52ea431bbf"
+                    "uid": "ad20fddbad"
                   }
                 ]
               },
-              "uid": "ca68a53ad2"
+              "uid": "7a29199630"
             }
           ],
           "uid": "1c615aa889"
