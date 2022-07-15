@@ -30,7 +30,7 @@ export class HatlChatComponent implements OnInit {
           finish_chat: async () => {
             console.log(this.variables)
             return this.http
-              .post("http://pacient-api.herokuapp.com/patient", {
+              .post("https://pacient-api.herokuapp.com/patient", {
                 ...this.variables,
                 status: this.getStatus(this.variables)
               })
