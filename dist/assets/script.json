@@ -8,18 +8,18 @@
           "name": "default",
           "steps": [
             {
-              "say": "Olá, tudo bem? Sou o guia virtual do HC!",
-              "uid": "e08ebf1bf8"
+              "say": "Olá, tudo bem? Sou o guia virtual do Ambulatório de Pediatria do HC!",
+              "uid": "e18675bd65"
             },
             {
               "say": "Antes de tudo, poderia me informar seu nome completo?",
               "uid": "c72cbfbd3f"
             },
             {
-              "uid": "0857180620",
+              "uid": "7543ad4009",
               "wait": {
-                "placeholder": "Seu nome",
-                "variable": "name"
+                "placeholder": "Nome do Responsável pela criança",
+                "variable": "responsible_name"
               }
             },
             {
@@ -27,19 +27,19 @@
               "uid": "791e22d955"
             },
             {
-              "say": "Poderia me informar o nome do responsável, caso faça sentido?",
-              "uid": "e71d112d51"
+              "say": "Agora, poderia me informar o nome da criança que será atendida?",
+              "uid": "a19112b04b"
             },
             {
-              "uid": "db838cb103",
+              "uid": "49369942ca",
               "wait": {
-                "placeholder": "Nome do responsável",
-                "variable": "responsible_name"
+                "placeholder": "Nome da criança",
+                "variable": "name"
               }
             },
             {
-              "say": "Ótimo! Você já é paciente do HC?",
-              "uid": "f20f12bf72"
+              "say": "Ótimo! É sua primeira vez no HC?",
+              "uid": "8aab8e6f0c"
             },
             {
               "uid": "f88b615719",
